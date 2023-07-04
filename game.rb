@@ -1,7 +1,3 @@
-#represents the game
-#manages the gameplay, turns and who wins
-#keeps the state (players, current_turn)
-#manages behavior with methods, start(), next_turn(), end(), validate_answer()
 
 class Game
 
@@ -10,29 +6,23 @@ class Game
     @player2 = player2
     @current_player = @player1
 
+    #question table
     @q1 = "What is 1 + 1?"
     @q2 = "What is 1 + 2?"
     @q3 = "What is 1 + 3?"
     @q4 = "What is 1 + 4?"
     @q5 = "What is 1 + 5?"
     @q6 = "What is 1 + 6?"
-
     @question_array = [@q1,@q2,@q3,@q4,@q5,@q6]
 
     @current_question = @q1
-
-    @a1 = "2", @a2 = "3", @a3 = "4", @a4 = "5", @a5 = "6", @a6 = "7"
-
-    @current_answer = @a1
   end
 
   def start_game
     puts "Welcome to TwO-O-Player!"
-
     loop do
       display_turn_info
       ask_question
-        # loop
       validate_answer
       check_game_over
       switch_turns
@@ -49,8 +39,6 @@ class Game
   def ask_question
     puts "#{@current_player.name}: answer the following question"
     puts @current_question
-
-    #.chomp to take players answer
     @current_player_answer = gets.chomp
   end
 
@@ -76,9 +64,7 @@ class Game
   end
 
   def validate_answer
-
     expected_answer = get_expected_answer(@current_question)
-
     puts expected_answer
     if @current_player_answer == expected_answer
       puts "CORRECT!"
